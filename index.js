@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRoutes from "./routes/userRoutes.js";
+import cors from "cors";
 
 const app = express();
 
@@ -12,6 +13,7 @@ mongoose
   .then(() => console.log("Database connected"))
   .catch((err) => console.log(err));
 
+app.use(cors());
 app.use(express.json());
 
 app.use("/users", userRoutes);
